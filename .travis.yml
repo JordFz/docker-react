@@ -1,0 +1,10 @@
+lenguage: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jfc/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jfc/docker-react npm run test
